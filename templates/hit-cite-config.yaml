@@ -55,23 +55,6 @@ data:
       </property>
 
       <property>
-        <name>hive.exec.scratchdir</name>
-        <value>file:///mnt/iceberg/tmp/hive</value>
-      </property>
-
-      <property>
-        <name>hive.exec.local.scratchdir</name>
-        <value>/mnt/iceberg/tmp/hive</value>
-      </property>
-
-      <property>
-        <name>hive.downloaded.resources.dir</name>
-        <value>/mnt/iceberg/tmp/hive/resources</value>
-      </property>
-
-
-
-      <property>
         <name>hive.llap.object.cache.enabled</name>
         <value>false</value>
       </property>
