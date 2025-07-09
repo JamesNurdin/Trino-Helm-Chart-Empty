@@ -23,8 +23,6 @@ spec:
       volumeMounts:
         - name: pgr24jamesvol1claim
           mountPath: /mnt/primary
-        - name: {{ .Values.pvc.iceberg.name }}
-          mountPath: /mnt/iceberg
       securityContext:
         capabilities:
           drop:
@@ -42,9 +40,6 @@ spec:
     - name: pgr24jamesvol1claim
       persistentVolumeClaim:
         claimName: pgr24jamesvol1claim
-    - name: {{ .Values.pvc.iceberg.name }}
-      persistentVolumeClaim:
-        claimName: {{ .Values.pvc.iceberg.name }}
     - name: kube-api-access-kkwjn
       projected:
         sources:
