@@ -24,13 +24,12 @@ spec:
           - | 
             schematool -initSchema -dbType postgres && \
             hive --service metastore
-            # chmod 777 /mnt/iceberg/tmp/hive
       volumeMounts:
         - name: pgr24jamesvol1claim
           mountPath: /mnt/primary/
         - name: hive-site-config-{{ .Values.instanceName }}
           mountPath: /opt/hive/conf
-        - name: iceberg-data
+        - name: empty-warehouse
           mountPath: /mnt/empty_warehouse_dir
       securityContext:
         capabilities:
@@ -48,7 +47,7 @@ spec:
         - name: POSTGRES_PASSWORD
           value: hivepass
       volumeMounts:
-        - name: iceberg-data
+        - name: empty-warehouse
           mountPath: /mnt/empty_warehouse_dir
       securityContext:
         capabilities:
@@ -65,7 +64,7 @@ spec:
     - name: hive-site-config-{{ .Values.instanceName }}
       configMap:
         name: hive-site-config-{{ .Values.instanceName }}
-    - name: iceberg-data
+    - name: empty-warehouse
       emptyDir: {}
     - name: kube-api-access
       projected:
