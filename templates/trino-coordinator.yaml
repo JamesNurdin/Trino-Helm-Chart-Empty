@@ -30,7 +30,7 @@ spec:
         - containerPort: 9090
           protocol: TCP
       image: {{ .Values.trino.pod.image }}
-      command: ["/bin/sh", "-c", "mkdir /mnt/empty_warehouse_dir && chmod 777 /mnt/empty_warehouse_dir && cd /lib/trino/bin && ./run-trino"]
+      command: ["/bin/sh", "-c", "cd /lib/trino/bin && ./run-trino"]
       volumeMounts:
         - name: pgr24jamesvol1claim
           mountPath: /mnt/primary
