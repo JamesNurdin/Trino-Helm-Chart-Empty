@@ -34,7 +34,7 @@ data:
 
       <property>
         <name>hive.metastore.warehouse.dir</name>
-        <value>/mnt/empty/warehouse</value>
+        <value>/mnt/empty_warehouse_dir</value>
         <description>Location of the Hive warehouse</description>
       </property>
 
@@ -53,6 +53,23 @@ data:
         <name>fs.defaultFS</name>
         <value>file:///</value>
       </property>
+
+      <property>
+        <name>hive.exec.scratchdir</name>
+        <value>file:///mnt/iceberg/tmp/hive</value>
+      </property>
+
+      <property>
+        <name>hive.exec.local.scratchdir</name>
+        <value>/mnt/iceberg/tmp/hive</value>
+      </property>
+
+      <property>
+        <name>hive.downloaded.resources.dir</name>
+        <value>/mnt/iceberg/tmp/hive/resources</value>
+      </property>
+
+
 
       <property>
         <name>hive.llap.object.cache.enabled</name>
