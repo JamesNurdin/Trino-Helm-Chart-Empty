@@ -39,7 +39,7 @@ spec:
         - name: trino-iceberg-config-{{ .Values.instanceName }}
           mountPath: /etc/trino/catalog/iceberg.properties
           subPath: iceberg.properties
-        - name: trino-coord-config
+        - name: trino-coord-config-{{ .Values.instanceName }}
           mountPath: /etc/trino/config.properties
           subPath: config.properties
         - name: trino-jvm-config
@@ -71,9 +71,9 @@ spec:
     - name: trino-iceberg-config-{{ .Values.instanceName }}
       configMap:
         name: trino-iceberg-config-{{ .Values.instanceName }}
-    - name: trino-coord-config
+    - name: trino-coord-config-{{ .Values.instanceName }}
       configMap:
-        name: trino-coord-config
+        name: trino-coord-config-{{ .Values.instanceName }}
     - name: trino-jvm-config
       configMap:
         name: trino-jvm-config
