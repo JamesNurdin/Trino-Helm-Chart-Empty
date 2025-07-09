@@ -22,6 +22,8 @@ spec:
       command: ["/bin/bash", "-c"]
       args:
           - |
+            mkdir /mnt/empty_warehouse_dir && \
+            chmod 777 /mnt/empty_warehouse_dir && \
             schematool -initSchema -dbType postgres && \
             hive --service metastore
             # chmod 777 /mnt/iceberg/tmp/hive
