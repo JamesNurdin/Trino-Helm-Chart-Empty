@@ -39,7 +39,6 @@ spec:
             - -c
             - |
               echo "test"
-              sleep 100000
           volumeMounts:
             - name: pgr24jamesvol1claim
               mountPath: /mnt/primary
