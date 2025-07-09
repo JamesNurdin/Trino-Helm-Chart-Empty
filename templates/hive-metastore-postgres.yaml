@@ -30,7 +30,7 @@ spec:
         - name: hive-site-config-{{ .Values.instanceName }}
           mountPath: /opt/hive/conf
         - name: empty-warehouse
-          mountPath: /mnt/empty_warehouse_dir
+          mountPath: /mnt/iceberg/warehouse
       securityContext:
         capabilities:
           drop:
@@ -48,7 +48,7 @@ spec:
           value: hivepass
       volumeMounts:
         - name: empty-warehouse
-          mountPath: /mnt/empty_warehouse_dir
+          mountPath: /mnt/iceberg/warehouse
       securityContext:
         capabilities:
           drop:
