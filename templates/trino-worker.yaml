@@ -55,7 +55,7 @@ spec:
           volumeMounts:
             - name: pgr24jamesvol1claim
               mountPath: /mnt/primary
-            - name: {{ $.Values.pvc.iceberg.name }}
+            - name: iceberg-data
               mountPath: /mnt/iceberg
             - name: trino-iceberg-config-{{ $.Values.instanceName }}
               mountPath: /etc/trino/catalog/iceberg.properties
