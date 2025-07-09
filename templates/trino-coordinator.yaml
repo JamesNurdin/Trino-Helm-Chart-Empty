@@ -35,7 +35,7 @@ spec:
         - name: pgr24jamesvol1claim
           mountPath: /mnt/primary
         - name: iceberg-data
-          mountPath: /mnt/iceberg
+          mountPath: /mnt/empty_warehouse_dir
         - name: trino-iceberg-config-{{ .Values.instanceName }}
           mountPath: /etc/trino/catalog/iceberg.properties
           subPath: iceberg.properties
