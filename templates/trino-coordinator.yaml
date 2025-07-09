@@ -81,7 +81,7 @@ spec:
       configMap:
         name: trino-jmx-config
     - name: iceberg-data
-        emptyDir:{}
+      emptyDir: {}
     - name: kube-api-access-kkwjn
       projected:
         sources:
