@@ -1,0 +1,13 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  namespace: pgr24james
+  name: trino-route-{{ .Values.instanceName }}
+spec:
+  host: trino-route-{{ .Values.instanceName }}-pgr24james.apps.os.dcs.gla.ac.uk
+  to:
+    kind: Service
+    name: trino-service-{{ .Values.instanceName }}
+    weight: 100
+  port:
+    targetPort: 8080
