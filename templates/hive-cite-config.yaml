@@ -56,17 +56,17 @@ data:
 
       <property>
         <name>hive.exec.scratchdir</name>
-        <value>file:///mnt/iceberg/tmp/hive</value>
+        <value>file:///mnt/empty_warehouse_dir/tmp/hive</value>
       </property>
 
       <property>
         <name>hive.exec.local.scratchdir</name>
-        <value>/mnt/iceberg/tmp/hive</value>
+        <value>/mnt/empty_warehouse_dir/tmp/hive</value>
       </property>
 
       <property>
         <name>hive.downloaded.resources.dir</name>
-        <value>/mnt/iceberg/tmp/hive/resources</value>
+        <value>/mnt/empty_warehouse_dir/tmp/hive/resources</value>
       </property>
 
 
