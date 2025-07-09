@@ -56,7 +56,7 @@ spec:
         - name: hive-site-config-{{ .Values.instanceName }}
           mountPath: /opt/hive/conf
         - name: empty-warehouse
-          mountPath: /mnt/iceberg/warehouse
+          mountPath: /mnt/iceberg/warehouse/tpcds.db
       securityContext:
         capabilities:
           drop:
