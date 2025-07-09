@@ -3,12 +3,12 @@ entries:
   Trino-Helm-Chart-Empty:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-07-09T14:04:18.812132+01:00"
+    created: "2025-07-09T14:05:47.2987071+01:00"
     description: A Helm chart for deploying a Trino-Iceberg-Hive lakehouse
-    digest: d23a2f3e382637f24249c2b697bae9542c2bbb936dce5f6e4d3e7d4b9a597f37
+    digest: e33a1030e18a311082962f387b41c81cf4b2f449faafad23f2ff2ebd83afaf63
     name: Trino-Helm-Chart-Empty
     type: application
     urls:
     - https://JamesNurdin.github.io/Trino-Helm-Chart-Empty/Trino-Helm-Chart-Empty-0.1.0.tgz
     version: 0.1.0
-generated: "2025-07-09T14:04:18.8111134+01:00"
+generated: "2025-07-09T14:05:47.2977045+01:00"

@@ -28,7 +28,7 @@ spec:
       volumeMounts:
         - name: pgr24jamesvol1claim
           mountPath: /mnt/primary/
-        - name: hive-site-config
+        - name: hive-site-config-{{ .Values.instanceName }}
           mountPath: /opt/hive/conf
         - name: {{ .Values.pvc.iceberg.name }}
           mountPath: /mnt/iceberg
@@ -62,9 +62,9 @@ spec:
     - name: {{ .Values.pvc.iceberg.name }}
       persistentVolumeClaim:
         claimName: {{ .Values.pvc.iceberg.name }}
-    - name: hive-site-config
+    - name: hive-site-config-{{ .Values.instanceName }}
       configMap:
-        name: hive-site-config
+        name: hive-site-config-{{ .Values.instanceName }}
     - name: kube-api-access
       projected:
         sources:
