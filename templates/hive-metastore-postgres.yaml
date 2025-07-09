@@ -31,7 +31,7 @@ spec:
         - name: hive-site-config-{{ .Values.instanceName }}
           mountPath: /opt/hive/conf
         - name: iceberg-data
-          mountPath: /mnt/iceberg
+          mountPath: /mnt/empty_warehouse_dir
       securityContext:
         capabilities:
           drop:
