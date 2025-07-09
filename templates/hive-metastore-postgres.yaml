@@ -21,7 +21,7 @@ spec:
         - containerPort: 9083
       command: ["/bin/bash", "-c"]
       args:
-          - |
+          - | 
             schematool -initSchema -dbType postgres && \
             hive --service metastore
             # chmod 777 /mnt/iceberg/tmp/hive
