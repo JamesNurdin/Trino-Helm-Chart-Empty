@@ -34,7 +34,7 @@ data:
 
       <property>
         <name>hive.metastore.warehouse.dir</name>
-        <value>/mnt/empty_warehouse_dir</value>
+        <value>/mnt/iceberg</value>
         <description>Location of the Hive warehouse</description>
       </property>
 

@@ -22,8 +22,6 @@ spec:
       command: ["/bin/bash", "-c"]
       args:
           - |
-            mkdir /mnt/empty_warehouse_dir && \
-            chmod 777 /mnt/empty_warehouse_dir && \
             schematool -initSchema -dbType postgres && \
             hive --service metastore
             # chmod 777 /mnt/iceberg/tmp/hive
@@ -32,6 +30,8 @@ spec:
           mountPath: /mnt/primary/
         - name: hive-site-config-{{ .Values.instanceName }}
           mountPath: /opt/hive/conf
+        - name: iceberg-data
+          mountPath: /mnt/iceberg
       securityContext:
         capabilities:
           drop:
@@ -48,7 +48,7 @@ spec:
         - name: POSTGRES_PASSWORD
           value: hivepass
       volumeMounts:
-        - name: {{ .Values.pvc.iceberg.name }}
+        - name: iceberg-data
           mountPath: /mnt/iceberg
       securityContext:
         capabilities:
@@ -65,6 +65,8 @@ spec:
     - name: hive-site-config-{{ .Values.instanceName }}
       configMap:
         name: hive-site-config-{{ .Values.instanceName }}
+    - name: iceberg-data
+        emptyDir:{}
     - name: kube-api-access
       projected:
         sources:
