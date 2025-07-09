@@ -30,7 +30,7 @@ spec:
         - /bin/sh
         - -c
         - |
-          echo "test"
+          echo test
       volumeMounts:
         - name: pgr24jamesvol1claim
           mountPath: /mnt/primary
