@@ -29,6 +29,35 @@ spec:
         seLinuxOptions:
           level: 's0:c29,c14'
         runAsUser: 0
+
+      initContainers:
+        - name: prefill
+          image: macavaney/idabox:py310-v105
+          imagePullPolicy: IfNotPresent
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "test"
+              sleep 100000
+          volumeMounts:
+            - name: pgr24jamesvol1claim
+              mountPath: /mnt/primary
+            - name: empty-warehouse
+              mountPath: /mnt/empty_warehouse_dir
+            - name: {{ $.Values.pvc.iceberg.name }}
+              mountPath: /mnt/iceberg
+          resources:
+            requests:
+              cpu: "4"
+              memory: "20Gi"
+            limits:
+              cpu: "4"
+              memory: "20Gi"
+          securityContext:
+            capabilities:
+              drop: [ "MKNOD" ]
+
       containers:
         - name: app-container
           image: {{ $.Values.trino.pod.image }}
@@ -55,7 +84,7 @@ spec:
           volumeMounts:
             - name: pgr24jamesvol1claim
               mountPath: /mnt/primary
-            - name: iceberg-data
+            - name: empty-warehouse
               mountPath: /mnt/empty_warehouse_dir
             - name: trino-iceberg-config-{{ $.Values.instanceName }}
               mountPath: /etc/trino/catalog/iceberg.properties
@@ -88,7 +117,7 @@ spec:
         - name: trino-jmx-config
           configMap:
             name: trino-jmx-config
-        - name: iceberg-data
+        - name: empty-warehouse
           emptyDir: {}
         - name: kube-api-access-kkwjn
           projected:

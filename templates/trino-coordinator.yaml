@@ -34,7 +34,7 @@ spec:
       volumeMounts:
         - name: pgr24jamesvol1claim
           mountPath: /mnt/primary
-        - name: iceberg-data
+        - name: empty-warehouse
           mountPath: /mnt/empty_warehouse_dir
         - name: trino-iceberg-config-{{ .Values.instanceName }}
           mountPath: /etc/trino/catalog/iceberg.properties
@@ -80,7 +80,7 @@ spec:
     - name: trino-jmx-config
       configMap:
         name: trino-jmx-config
-    - name: iceberg-data
+    - name: empty-warehouse
       emptyDir: {}
     - name: kube-api-access-kkwjn
       projected:
