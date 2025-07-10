@@ -30,7 +30,7 @@ spec:
           mountPath: /mnt/primary
         - name: empty-warehouse
           mountPath: /mnt/empty_warehouse_dir
-        - name: { { $.Values.pvc.iceberg.name } }
+        - name: {{ $.Values.pvc.iceberg.name }}
           mountPath: /mnt/iceberg
       resources:
         requests:
