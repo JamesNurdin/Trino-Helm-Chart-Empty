@@ -38,7 +38,7 @@ spec:
             - /bin/sh
             - -c
             - |
-              echo "test"
+              python /mnt/primary/Mini-project/Apache/System/Queries/TPCDS/Time_Workload/isolated_data/move_datalake.py
           volumeMounts:
             - name: pgr24jamesvol1claim
               mountPath: /mnt/primary
