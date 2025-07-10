@@ -83,8 +83,8 @@ spec:
           volumeMounts:
             - name: pgr24jamesvol1claim
               mountPath: /mnt/primary
-            #- name: empty-warehouse
-            #  mountPath: /mnt/iceberg/warehouse/tpcds.db
+            - name: empty-warehouse
+              mountPath: /mnt/iceberg/warehouse/tpcds.db
             - name: trino-iceberg-config-{{ $.Values.instanceName }}
               mountPath: /etc/trino/catalog/iceberg.properties
               subPath: iceberg.properties
