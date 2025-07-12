@@ -25,6 +25,21 @@
         "worker": {
           "type": "object",
           "properties": {
+            "resources": {
+              "type": "object",
+              "properties": {
+                "cpu": {
+                  "type": "string"
+                },
+                "memory": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "cpu",
+                "memory"
+              ]
+            },
             "replicasPerNode": {
               "type": "integer"
             },
@@ -37,18 +52,35 @@
           },
           "required": [
             "nodes",
-            "replicasPerNode"
+            "replicasPerNode",
+            "resources"
           ]
         },
         "coord": {
           "type": "object",
           "properties": {
+            "resources": {
+              "type": "object",
+              "properties": {
+                "cpu": {
+                  "type": "string"
+                },
+                "memory": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "cpu",
+                "memory"
+              ]
+            },
             "nodeName": {
               "type": "string"
             }
           },
           "required": [
-            "nodeName"
+            "nodeName",
+            "resources"
           ]
         }
       },

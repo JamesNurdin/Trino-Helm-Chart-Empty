@@ -10,6 +10,9 @@ trino:
   pod:
     image: 2570809n/trino-node-exporter:latest
   worker:
+    resources:
+        cpu: "4"
+        memory: "64Gi"
     replicasPerNode: 1
     nodes:
       - "idagpu-19"
@@ -17,6 +20,9 @@ trino:
       - "idagpu-21"
       - "idagpu-22"
   coord:
+    resources:
+      cpu: "4"
+      memory: "64Gi"
     nodeName: "idagpu-23"  # or "" to disable
 
 test:

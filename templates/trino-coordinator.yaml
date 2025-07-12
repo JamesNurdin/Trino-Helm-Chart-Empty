@@ -40,11 +40,11 @@ spec:
           mountPath: /mnt/iceberg
       resources:
         requests:
-          cpu: "4"
-          memory: "20Gi"
+          cpu: { { .Values.trino.coord.resources.cpu } }
+          memory: { { .Values.trino.coord.resources.memory } }
         limits:
-          cpu: "4"
-          memory: "20Gi"
+          cpu: { { .Values.trino.coord.resources.cpu } }
+          memory: { { .Values.trino.coord.resources.memory } }
       securityContext:
         capabilities:
           drop: [ "MKNOD" ]
@@ -83,11 +83,11 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           requests:
-            cpu: "4"           
-            memory: "64Gi"       
+            cpu: {{ .Values.trino.coord.resources.cpu }}
+            memory: {{ .Values.trino.coord.resources.memory }}
           limits:
-            cpu: "4"           
-            memory: "64Gi"      
+            cpu: {{ .Values.trino.coord.resources.cpu }}
+            memory: {{ .Values.trino.coord.resources.memory }}
   serviceAccount: containerroot
   volumes:
     - name: pgr24jamesvol1claim
