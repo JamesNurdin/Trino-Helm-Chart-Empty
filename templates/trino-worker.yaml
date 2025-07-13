@@ -48,11 +48,11 @@ spec:
               mountPath: /mnt/iceberg
           resources:
             requests:
-              cpu: { { $.Values.trino.worker.resources.cpu } }
-              memory: { { $.Values.trino.worker.resources.memory } }
+              cpu: {{ $.Values.trino.worker.resources.cpu }}
+              memory: {{ $.Values.trino.worker.resources.memory }}
             limits:
-              cpu: { { $.Values.trino.worker.resources.cpu } }
-              memory: { { $.Values.trino.worker.resources.memory } }
+              cpu: {{ $.Values.trino.worker.resources.cpu }}
+              memory: {{ $.Values.trino.worker.resources.memory }}
           securityContext:
             capabilities:
               drop: [ "MKNOD" ]
