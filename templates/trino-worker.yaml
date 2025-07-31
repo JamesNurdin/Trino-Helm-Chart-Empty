@@ -58,6 +58,17 @@ spec:
               drop: [ "MKNOD" ]
 
       containers:
+        - name: pod-metrics
+          image: quay.io/prometheus/node-exporter:v1.8.1
+          args:
+            - --path.procfs=/proc
+            - --path.sysfs=/sys
+            - --path.rootfs=/host
+            - --collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($|/)
+          ports:
+            - containerPort: 9100
+          securityContext:
+            runAsUser: 0
         - name: app-container
           image: {{ $.Values.trino.pod.image }}
           command: ["/bin/sh", "-c", "cd /lib/trino/bin && ./run-trino"]
