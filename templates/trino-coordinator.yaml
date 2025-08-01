@@ -65,7 +65,11 @@ spec:
       ports:
           - containerPort: 8000
       image: macavaney/idabox:py310-v105  # Lightweight container for testing
-      command: [ "/bin/sh", "-c", "cd /mnt/primary/Mini-project/Apache/System/Probe && ./coord.sh \"{{ .Values.instanceName }}\"" ]
+      command: [
+        "/bin/sh",
+        "-c",
+        "cd /mnt/primary/Mini-project/Apache/System/Probe && ./coord.sh {{ .Values.instanceName }} {{ len .Values.trino.worker.nodes }}"
+      ]
       volumeMounts:
         - name: pgr24jamesvol1claim
           mountPath: /mnt/primary
