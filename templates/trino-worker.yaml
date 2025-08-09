@@ -58,7 +58,7 @@ spec:
               drop: [ "MKNOD" ]
 
       containers:
-        - name: pod-metrics
+        - name: node-exporter
           image: quay.io/prometheus/node-exporter:v1.8.1
           args:
             - --path.procfs=/proc
@@ -69,33 +69,36 @@ spec:
             - containerPort: 9100
           securityContext:
             runAsUser: 0
-        - name: worker-ping
-          image: macavaney/idabox:py310-v105  # Lightweight container for testing
-          command: [ "/bin/sh", "-c", "cd /mnt/primary/Mini-project/Apache/System/Probe && ./worker.sh" ]
-          volumeMounts:
-            - name: pgr24jamesvol1claim
-              mountPath: /mnt/primary
-          resources:
-            requests:
-              cpu: "1"
-              memory: "1Gi"
-            limits:
-              cpu: "1"
-              memory: "1Gi"
-          securityContext:
-            capabilities:
-              drop:
-                - MKNOD
-            imagePullPolicy: IfNotPresent
-        - name: app-container
+        - name: trino-worker
           image: {{ $.Values.trino.pod.image }}
-          command: ["/bin/sh", "-c", "cd /lib/trino/bin && ./run-trino"]
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          command:
+            - /bin/sh
+            - -c
+            - |
+              # optional: quick sanity check
+              # start your probe *in the background*, passing the expanded POD_NAME
+              # make Trino PID 1 so it gets signals correctly
+              exec /lib/trino/bin/run-trino &
+              /mnt/primary/Mini-project/Apache/System/Probe/trino_probe.sh "$POD_NAME"
           ports:
             - containerPort: 8080
               protocol: TCP
             - containerPort: 9189
               protocol: TCP
             - containerPort: 9090
+              protocol: TCP
+            - containerPort: 9101
+              protocol: TCP
+            - containerPort: 9102
+              protocol: TCP
+            - containerPort: 9103
+              protocol: TCP
+            - containerPort: 9104
               protocol: TCP
           securityContext:
             capabilities:
