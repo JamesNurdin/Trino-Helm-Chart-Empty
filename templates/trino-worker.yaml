@@ -86,6 +86,8 @@ spec:
               exec /lib/trino/bin/run-trino &
               /mnt/primary/Mini-project/Apache/System/Probe/trino_probe.sh "{{ $.Values.instanceName }}" "$POD_NAME"
           ports:
+            - containerPort: 7071
+              protocol: TCP
             - containerPort: 8080
               protocol: TCP
             - containerPort: 9189

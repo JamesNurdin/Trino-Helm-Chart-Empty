@@ -63,6 +63,8 @@ spec:
         runAsUser: 0
     - name: trino-coord
       ports:
+        - containerPort: 7071
+          protocol: TCP
         - containerPort: 8080
         - containerPort: 9100
         - containerPort: 9189
