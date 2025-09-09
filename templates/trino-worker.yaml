@@ -136,6 +136,11 @@ spec:
             - name: trino-jmx-config
               mountPath: /etc/jmx-exporter-config.yml
               subPath: jmx-exporter-config.yml
+          livenessProbe:
+            httpGet: { path: /v1/info, port: 8080 }
+            initialDelaySeconds: 60
+            periodSeconds: 15
+            failureThreshold: 2
       volumes:
         - name: pgr24jamesvol1claim
           persistentVolumeClaim:
