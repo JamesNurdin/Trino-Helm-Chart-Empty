@@ -14,5 +14,7 @@ data:
     node.environment=test
     query.max-memory-per-node:25GB
     memory.heap-headroom-per-node:5GB
+    spiller-spill-path=/mnt/iceberg/spill
+    spill-enabled=true
     query.remote-task.max-error-duration=5m
     exchange.max-buffer-size=128MB

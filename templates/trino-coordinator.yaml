@@ -88,9 +88,6 @@ spec:
         - /bin/sh
         - -c
         - |
-          # optional: quick sanity check
-          # start your probe *in the background*, passing the expanded POD_NAME
-          # make Trino PID 1 so it gets signals correctly
           exec /lib/trino/bin/run-trino &
           /mnt/primary/Mini-project/Apache/System/Probe/trino_probe.sh "{{ $.Values.instanceName }}" "$POD_NAME"
       volumeMounts:
