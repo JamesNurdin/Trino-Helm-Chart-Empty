@@ -36,11 +36,11 @@ spec:
         requests:
           cpu: "2"
           memory: "16Gi"
-          ephemeral-storage: "1Gi"
+          ephemeral-storage: "300Gi"
         limits:
           cpu: "2"
           memory: "16Gi"
-          ephemeral-storage: "1Gi"
+          ephemeral-storage: "300Gi"
       securityContext:
         capabilities:
           drop: [ "MKNOD" ]
