@@ -34,11 +34,13 @@ spec:
           mountPath: /mnt/iceberg
       resources:
         requests:
-          cpu: "4"
-          memory: "20Gi"
+          cpu: "2"
+          memory: "16Gi"
+          ephemeral-storage: "1Gi"
         limits:
-          cpu: "4"
-          memory: "20Gi"
+          cpu: "2"
+          memory: "16Gi"
+          ephemeral-storage: "1Gi"
       securityContext:
         capabilities:
           drop: [ "MKNOD" ]

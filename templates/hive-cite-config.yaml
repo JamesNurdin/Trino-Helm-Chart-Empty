@@ -69,8 +69,6 @@ data:
         <value>/mnt/iceberg/warehouse/tmp/hive/resources</value>
       </property>
 
-
-
       <property>
         <name>hive.llap.object.cache.enabled</name>
         <value>false</value>
