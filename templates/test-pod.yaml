@@ -60,11 +60,13 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           requests:
-            cpu: "4"
-            memory: "32Gi"
+            cpu: "2"
+            memory: "16Gi"
+            ephemeral-storage: "1Gi"
           limits:
-            cpu: "4"
-            memory: "32Gi"
+            cpu: "2"
+            memory: "16Gi"
+            ephemeral-storage: "1Gi"
   serviceAccount: containerroot
   volumes:
     - name: pgr24jamesvol1claim
