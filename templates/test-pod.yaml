@@ -27,7 +27,7 @@ spec:
         - /bin/sh
         - -c
         - |
-          python /mnt/primary/Mini-project/Apache/System/Queries/TPCDS/Time_Workload/isolated_data/move_datalake.py --path {{ .Values.pvc.iceberg.path }}
+          python /mnt/primary/Mini-project/Apache/System/Queries/TPCDS/Time_Workload/isolated_data/move_datalake.py --source_dir {{ .Values.pvc.iceberg.path }}
       volumeMounts:
         - name: pgr24jamesvol1claim
           mountPath: /mnt/primary
