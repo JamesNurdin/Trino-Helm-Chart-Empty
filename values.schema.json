@@ -93,6 +93,9 @@
     "test": {
       "type": "object",
       "properties": {
+        "nodeName": {
+          "type": "string"
+        },
         "pod": {
           "type": "object",
           "properties": {
@@ -106,6 +109,7 @@
         }
       },
       "required": [
+        "nodeName",
         "pod"
       ]
     },

@@ -4,6 +4,9 @@ metadata:
   name: test-pod-{{ .Values.instanceName }}
   namespace: pgr24james
 spec:
+  {{ - if .Values.test.nodeName }}
+  nodeName: {{ .Values.test.nodeName | quote }}
+  {{ - end }}
   serviceAccountName: containerroot
   imagePullSecrets:
     - name: containerroot-dockercfg-qrptl
@@ -24,14 +27,14 @@ spec:
         - /bin/sh
         - -c
         - |
-          python /mnt/primary/Mini-project/Apache/System/Queries/TPCDS/Time_Workload/isolated_data/move_datalake.py --path {{ $.Values.pvc.iceberg.path }}
+          python /mnt/primary/Mini-project/Apache/System/Queries/TPCDS/Time_Workload/isolated_data/move_datalake.py --path {{ .Values.pvc.iceberg.path }}
       volumeMounts:
         - name: pgr24jamesvol1claim
           mountPath: /mnt/primary
         - name: empty-warehouse
           mountPath: /mnt/empty_warehouse_dir
-        - name: {{ $.Values.pvc.iceberg.name }}
-          mountPath: {{ $.Values.pvc.iceberg.path }}
+        - name: {{ .Values.pvc.iceberg.name }}
+          mountPath: {{ .Values.pvc.iceberg.path }}
       resources:
         requests:
           cpu: "2"
@@ -52,7 +55,7 @@ spec:
         - name: pgr24jamesvol1claim
           mountPath: /mnt/primary
         - name: empty-warehouse
-          mountPath: {{ $.Values.pvc.iceberg.path }}
+          mountPath: {{ .Values.pvc.iceberg.path }}
       securityContext:
         capabilities:
           drop:
@@ -72,9 +75,9 @@ spec:
     - name: pgr24jamesvol1claim
       persistentVolumeClaim:
         claimName: pgr24jamesvol1claim
-    - name: {{ $.Values.pvc.iceberg.name }}
+    - name: {{ .Values.pvc.iceberg.name }}
       persistentVolumeClaim:
-        claimName: {{ $.Values.pvc.iceberg.name }}
+        claimName: {{ .Values.pvc.iceberg.name }}
     - name: empty-warehouse
       emptyDir: {}
     - name: kube-api-access-kkwjn

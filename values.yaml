@@ -26,6 +26,7 @@ trino:
     nodeName: "idagpu-23"  # or "" to disable
 
 test:
+  nodeName: "idagpu-12"  # or "" to disable
   pod:
     image: macavaney/idabox:py310-v93
 
