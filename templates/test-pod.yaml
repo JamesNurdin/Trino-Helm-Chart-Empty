@@ -52,7 +52,7 @@ spec:
         - name: pgr24jamesvol1claim
           mountPath: /mnt/primary
         - name: empty-warehouse
-          mountPath: {{ $.Values.pvc.iceberg.path }}/warehouse/{{ $.Values.pvc.iceberg.db }}
+          mountPath: {{ $.Values.pvc.iceberg.path }}
       securityContext:
         capabilities:
           drop:
