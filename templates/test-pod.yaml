@@ -4,9 +4,9 @@ metadata:
   name: test-pod-{{ .Values.instanceName }}
   namespace: pgr24james
 spec:
-  {{ - if .Values.test.nodeName }}
+  {{- if .Values.test.nodeName }}
   nodeName: {{ .Values.test.nodeName | quote }}
-  {{ - end }}
+  {{- end }}
   serviceAccountName: containerroot
   imagePullSecrets:
     - name: containerroot-dockercfg-qrptl
