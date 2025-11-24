@@ -41,3 +41,5 @@ metastore:
 pvc:
   iceberg:
     name: iceberg-pvc-a
+    path: /mnt/iceberg
+    db: tpcds.db

@@ -38,14 +38,14 @@ spec:
             - /bin/sh
             - -c
             - |
-              python /mnt/primary/Mini-project/Apache/System/Queries/TPCDS/Time_Workload/isolated_data/move_datalake.py
+              python /mnt/primary/Mini-project/Apache/System/Queries/TPCDS/Time_Workload/isolated_data/move_datalake.py --source_dir {{ $.Values.pvc.iceberg.path }}
           volumeMounts:
             - name: pgr24jamesvol1claim
               mountPath: /mnt/primary
             - name: empty-warehouse
               mountPath: /mnt/empty_warehouse_dir
             - name: {{ $.Values.pvc.iceberg.name }}
-              mountPath: /mnt/iceberg
+              mountPath: {{ $.Values.pvc.iceberg.path }}
           resources:
             requests:
               cpu: {{ $.Values.trino.worker.resources.cpu }}
@@ -120,7 +120,7 @@ spec:
             - name: pgr24jamesvol1claim
               mountPath: /mnt/primary
             - name: empty-warehouse
-              mountPath: /mnt/iceberg/warehouse/tpcds.db
+              mountPath: {{ $.Values.pvc.iceberg.path }}/warehouse/{{ $.Values.pvc.iceberg.db }}
             - name: trino-iceberg-config-{{ $.Values.instanceName }}
               mountPath: /etc/trino/catalog/iceberg.properties
               subPath: iceberg.properties

@@ -168,10 +168,18 @@
           "properties": {
             "name": {
               "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "db": {
+              "type": "string"
             }
           },
           "required": [
-            "name"
+            "db",
+            "name",
+            "path"
           ]
         }
       },
